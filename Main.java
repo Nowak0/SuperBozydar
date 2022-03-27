@@ -12,10 +12,10 @@ public class Main
         Panel panel = new Panel();
         System.out.println(panel.isFocusable());
         frame.add(panel);
-        frame.setBounds(100, 100, 600, 600);
+        frame.setBounds(100, 100, 800, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        panel.iks = 9;
+        panel.iks = 1;
         panel.igrek = 0;
         int ostatniSkok = panel.skok;
         while (panel.igrek < 19)
