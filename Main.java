@@ -1,12 +1,10 @@
 import javax.swing.*;
 
+public class Main {
 
-public class Main
-{
+    public static int part = 0;
 
-
-    public static void main(String[] args) throws InterruptedException
-    {
+    public static void main(String[] args) throws InterruptedException {
 
         JFrame frame = new JFrame("Animation");
         Panel panel = new Panel();
@@ -18,47 +16,47 @@ public class Main
         panel.iks = 1;
         panel.igrek = 0;
         int ostatniSkok = panel.skok;
-        while (panel.igrek < 19)
-        {
-            if(panel.igrek < 0)
-            {
+        while (panel.igrek < 19) {
+            if (panel.igrek < 0) {
                 panel.igrek = 0;
             }
-            if(panel.CzyZabijacz(panel.iks, panel.igrek))
-            {
+
+            
+            ustawPlansze(panel);
+
+            if (panel.CzyZabijacz(panel.iks, panel.igrek)) {
                 panel.igrek = 40;
-                panel.iks=1;
+                panel.iks = 1;
                 System.out.println("You died!");
                 break;
             }
-            if(panel.CzyMoneta(panel.iks, panel.igrek))
-            {
-              panel.ZbierzMonete(panel.iks, panel.igrek);
+            if (panel.CzyMoneta(panel.iks, panel.igrek)) {
+                panel.ZbierzMonete(panel.iks, panel.igrek);
             }
 
-            if(ostatniSkok == panel.skok)
-            {
+            if (ostatniSkok == panel.skok) {
 
-                if(panel.CzyMoznaRuszyc(panel.iks, panel.igrek + 1))
-                {
+                if (panel.CzyMoznaRuszyc(panel.iks, panel.igrek + 1)) {
                     panel.igrek++;
-                }
-                else
-                {
+                } else {
                     panel.skok = 0;
                 }
             }
             ostatniSkok = panel.skok;
 
-            if(panel.CzyZabijacz(panel.iks, panel.igrek))
-            {
-                panel.igrek = 20;
-            }
-
             panel.repaint();
             Thread.sleep(175);
         }
         panel.repaint();
-
     }
+
+    static void ustawPlansze(Panel panel) {
+        int x = panel.iks;
+
+        if (x >= Panel.ROZMIAR_PLANSZY_X - 1) {
+            panel.iks = 0;
+            panel.setPlansza(panel.getPlansza() + 1);
+        } 
+    }
+
 }
