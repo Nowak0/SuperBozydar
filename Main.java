@@ -3,7 +3,6 @@ import javax.swing.*;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-
         JFrame frame = new JFrame("Animation");
         Mapa mapa = new Mapa();
         Panel panel = new Panel(mapa);
@@ -22,10 +21,10 @@ public class Main {
             }
 
             if (panel.czyZabijacz(panel.iks, panel.igrek)) {
-                panel.igrek = 40;
-                panel.iks = 1;
-                System.out.println("You died!");
-                break;
+                panel.igrek = 10;
+                panel.iks = 10;
+                TheEndScreen.drawTheEnd(panel.getGraphics());
+                return;
             }
             if (panel.czyMoneta(panel.iks, panel.igrek)) {
                 panel.zbierzMonete(panel.iks, panel.igrek);

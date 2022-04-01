@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ListaPlansz {
-    private Integer[] plansza0 = new Integer[] {
+    private static final Integer[] BACKGROUND_0 = new Integer[]{
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -20,12 +21,14 @@ public class ListaPlansz {
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
-            0, 0, 0, 0, 0, 3,16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3,
-            0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0,16, 0, 0, 0, 0,23, 2, 2,
+            0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3,
+            0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23, 2, 2,
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
     };
 
-    private Integer[] plansza1 = new Integer[] {
+    private static final java.util.List<Monster> monsters0 = Arrays.asList(new Monster(new Position(9, 18)));
+
+    private static final Integer[] BACKGROUND_1 = new Integer[]{
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -42,13 +45,15 @@ public class ListaPlansz {
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4,
-            3, 0, 0, 0, 0, 3,16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3,
-            3, 3, 0, 0, 2, 2, 2, 0, 23, 0, 0, 0,16, 0, 0, 0,23, 2, 2, 2,
+            3, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3,
+            3, 3, 0, 0, 2, 2, 2, 0, 23, 0, 0, 0, 0, 0, 0, 0, 23, 2, 2, 2,
             2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
     };
 
-    private Integer[] plansza2 = new Integer[] {
+    private static final java.util.List<Monster> monsters1 = Arrays.asList(new Monster(new Position(13, 17)));
+
+    private static final Integer[] BACKGROUND2 = new Integer[]{
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -66,21 +71,29 @@ public class ListaPlansz {
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             3, 1, 1, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4,
-            2, 1, 1, 0, 1, 3,16, 3, 3, 3,23, 0, 0, 0, 0, 0, 0, 0, 3, 3,
-            1, 1, 1, 0, 2, 2, 2, 3, 3, 3, 2, 0,16,23, 0, 0, 0, 2, 2, 2,
+            2, 1, 1, 0, 1, 3, 3, 3, 3, 3, 23, 0, 0, 0, 0, 0, 0, 0, 3, 3,
+            1, 1, 1, 0, 2, 2, 2, 3, 3, 3, 2, 0, 0, 23, 0, 0, 0, 2, 2, 2,
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
     };
 
-    private final List<Integer[]> listaPlansz;
+    private static final java.util.List<Monster> monsters2 = Arrays.asList(new Monster(new Position(6, 16)), new Monster(new Position(15, 18)));
+
+    private final List<Stage> stages;
+
 
     public ListaPlansz() {
-        listaPlansz = new ArrayList<>(3);
-        listaPlansz.add(plansza0);
-        listaPlansz.add(plansza1);
-        listaPlansz.add(plansza2);
+        stages = new ArrayList<>(3);
+
+        Stage stage0 = new Stage(BACKGROUND_0, monsters0);
+        Stage stage1 = new Stage(BACKGROUND_1, monsters1);
+        Stage stage2 = new Stage(BACKGROUND2, monsters2);
+
+        stages.add(stage0);
+        stages.add(stage1);
+        stages.add(stage2);
     }
 
-    public List<Integer[]> getListaPlansz() {
-        return listaPlansz;
+    public List<Stage> getStages() {
+        return stages;
     }
 }

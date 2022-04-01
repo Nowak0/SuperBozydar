@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.List;
 
 public class Panel extends JPanel implements KeyListener {
     /**
@@ -10,7 +11,6 @@ public class Panel extends JPanel implements KeyListener {
     public static final int ROZMIAR_PLANSZY_X = 20;
     public int skok = 0;
     public int licznikMonet = 0;
-    public int zabijacz = 16;
     public int moneta = 23;
 
     int igrek = 0;
@@ -31,24 +31,44 @@ public class Panel extends JPanel implements KeyListener {
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 
-        graphics.drawOval(32 * iks, igrek * 32, 32, 32);
+        drawHero(graphics);
 
-        Integer[] plansza = mapa.getPlansza();
+        drawMonsters(graphics);
 
-        if(plansza == null) {
-            graphics.drawRect(0,0,200,200);
-            graphics.drawString("The end", 100, 100);
+        Integer[] background = mapa.getBackground();
+        if (background == null) {
+            TheEndScreen.drawTheEnd(graphics);
             return;
         }
 
         for (int i = 0; i < 400; i++) {
-            int id = plansza[i] - 1;
+            int id = background[i] - 1;
             int Y = id / 4;
             int X = id % 4;
-            graphics.drawImage(tiles.getImage(), i % 20 * 32, i / 20 * 32, i % 20 * 32 + 32, i / 20 * 32 + 32,
+            graphics.drawImage(tiles.getImage(),
+                    i % 20 * 32, i / 20 * 32, i % 20 * 32 + 32, i / 20 * 32 + 32,
                     0 + X * 32, 0 + Y * 32, 32 + X * 32, 32 + Y * 32, null);
         }
 
+    }
+
+    private void drawHero(Graphics graphics) {
+        graphics.drawOval(iks * 32, igrek * 32, 32, 32);
+    }
+
+    private void drawMonsters(Graphics graphics) {
+        Color color = graphics.getColor();
+
+        Stage stage = mapa.getStage();
+        List<Monster> monsters = stage.getMonsters();
+        for (int i = 0; i < monsters.size(); i++) {
+            Monster monster = monsters.get(i);
+            Position monsterPosition = monster.getPosition();
+            graphics.setColor(new Color(255, 0, 255));
+            graphics.fillRect(32 * monsterPosition.getX(), 32 * monsterPosition.getY(), 32, 32);
+            graphics.setColor(color);
+            monster.changePosition();
+        }
     }
 
     @Override
@@ -79,27 +99,33 @@ public class Panel extends JPanel implements KeyListener {
     }
 
     public boolean czyWolnePole(int x, int y) {
-        Integer[] plansza = mapa.getPlansza();
-        if (plansza == null) {
+        Integer[] background = mapa.getBackground();
+        if (background == null) {
             return false;
         }
-        return (plansza[y * ROZMIAR_PLANSZY_X + x] == 0);
+        return (background[y * ROZMIAR_PLANSZY_X + x] == 0);
     }
 
     public boolean czyZabijacz(int x, int y) {
-        Integer[] plansza = mapa.getPlansza();
-        if (plansza == null) {
-            return false;
+        Stage stage = mapa.getStage();
+        List<Monster> monsters = stage.getMonsters();
+        for (int i = 0; i < monsters.size(); i++) {
+            Monster monster = monsters.get(i);
+            int monsterX = monster.getPosition().getX();
+            int monsterY = monster.getPosition().getY();
+            if (x == monsterX && y == monsterY) {
+                return true;
+            }
         }
-        return (plansza[y * ROZMIAR_PLANSZY_X + x] == zabijacz);
+        return false;
     }
 
     public boolean czyMoneta(int x, int y) {
-        Integer[] plansza = mapa.getPlansza();
-        if (plansza == null) {
+        Integer[] background = mapa.getBackground();
+        if (background == null) {
             return false;
         }
-        return (plansza[y * ROZMIAR_PLANSZY_X + x] == moneta);
+        return (background[y * ROZMIAR_PLANSZY_X + x] == moneta);
     }
 
     public boolean czyMoznaRuszyc(int x, int y) {
@@ -108,8 +134,8 @@ public class Panel extends JPanel implements KeyListener {
 
     public void zbierzMonete(int x, int y) {
         licznikMonet++;
-        Integer[] plansza = mapa.getPlansza();
-        plansza[y * ROZMIAR_PLANSZY_X + x] = 0;
+        Integer[] background = mapa.getBackground();
+        background[y * ROZMIAR_PLANSZY_X + x] = 0;
         System.out.print("Liczba monet: ");
         System.out.println(licznikMonet);
     }

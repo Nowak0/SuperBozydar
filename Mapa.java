@@ -1,3 +1,4 @@
+
 import java.util.List;
 
 public class Mapa {
@@ -13,12 +14,20 @@ public class Mapa {
         return numerPlanszy;
     }
 
-    public Integer[] getPlansza() {
-        if(numerPlanszy > 2) {
+    public Integer[] getBackground() {
+        Stage stage = getStage();
+        if (stage == null) {
             return null;
         }
-        List<Integer[]> listaPlansz = this.listaPlansz.getListaPlansz();
-        return listaPlansz.get(numerPlanszy);
+        return stage.getBackground();
+    }
+
+    public Stage getStage() {
+        if (numerPlanszy > 2) {
+            return null;
+        }
+        List<Stage> stages = this.listaPlansz.getStages();
+        return stages.get(numerPlanszy);
     }
 
 }
