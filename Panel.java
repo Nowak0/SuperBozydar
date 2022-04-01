@@ -5,9 +5,7 @@ import java.awt.event.KeyListener;
 import java.util.List;
 
 public class Panel extends JPanel implements KeyListener {
-    /**
-     *
-     */
+
     public static final int ROZMIAR_PLANSZY_X = 20;
     public int skok = 0;
     public int licznikMonet = 0;
@@ -60,6 +58,12 @@ public class Panel extends JPanel implements KeyListener {
         Color color = graphics.getColor();
 
         Stage stage = mapa.getStage();
+        if(stage == null) {
+            TheEndScreen.drawTheEnd(getGraphics());
+            iks=400;
+            igrek=400;
+            return;
+        }
         List<Monster> monsters = stage.getMonsters();
         for (int i = 0; i < monsters.size(); i++) {
             Monster monster = monsters.get(i);
@@ -108,6 +112,9 @@ public class Panel extends JPanel implements KeyListener {
 
     public boolean czyZabijacz(int x, int y) {
         Stage stage = mapa.getStage();
+        if(stage == null) {
+            return false;
+        }
         List<Monster> monsters = stage.getMonsters();
         for (int i = 0; i < monsters.size(); i++) {
             Monster monster = monsters.get(i);

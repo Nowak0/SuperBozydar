@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class TheEndScreen {
     public static void drawTheEnd(Graphics graphics) {
-        graphics.drawRect(0, 0, 200, 200);
-        graphics.drawString("The end", 100, 100);
+        graphics.drawRect(100, 20, 400, 400);
+        graphics.drawString("Game over", 270, 200);
     }
 }

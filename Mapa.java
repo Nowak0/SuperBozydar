@@ -1,8 +1,8 @@
 
+import java.awt.*;
 import java.util.List;
 
 public class Mapa {
-
     private int numerPlanszy = 0;
     private ListaPlansz listaPlansz = new ListaPlansz();
 
@@ -23,8 +23,8 @@ public class Mapa {
     }
 
     public Stage getStage() {
-        if (numerPlanszy > 2) {
-            return null;
+       if (numerPlanszy > 2) {
+           return null;
         }
         List<Stage> stages = this.listaPlansz.getStages();
         return stages.get(numerPlanszy);

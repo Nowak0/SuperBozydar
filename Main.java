@@ -8,7 +8,7 @@ public class Main {
         Panel panel = new Panel(mapa);
         System.out.println(panel.isFocusable());
         frame.add(panel);
-        frame.setBounds(100, 100, 800, 800);
+        frame.setBounds(500, 100, 700, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         panel.iks = 1;
