@@ -11,7 +11,7 @@ public class Panel extends JPanel implements KeyListener {
     public int skok = 0;
     public int licznikMonet = 0;
     public int zabijacz = 16;
-    public int moneta = 4;
+    public int moneta = 23;
 
     int igrek = 0;
     int iks = 0;
