@@ -12,7 +12,7 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         panel.iks = 1;
-        panel.igrek = 0;
+        panel.igrek = 17;
 
         int ostatniSkok = panel.skok;
         while (panel.igrek < 19) {
