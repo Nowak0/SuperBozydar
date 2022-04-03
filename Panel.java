@@ -39,7 +39,7 @@ public class Panel extends JPanel implements KeyListener {
         Integer[] background = mapa.getBackground();
         if (background == null) {
             ending++;
-            TheEndScreen.drawTheEnd(graphics,ending);
+            TheEndScreen.drawTheEnd(graphics,ending,licznikMonet);
             return;
         }
         for (int i = 0; i < 400; i++) {
@@ -65,7 +65,7 @@ public class Panel extends JPanel implements KeyListener {
         Stage stage = mapa.getStage();
         if(stage == null) {
             ending++;
-            TheEndScreen.drawTheEnd(getGraphics(),ending);
+            TheEndScreen.drawTheEnd(getGraphics(),ending,licznikMonet);
             iks=400;
             igrek=400;
             return;
@@ -149,11 +149,10 @@ public class Panel extends JPanel implements KeyListener {
         if(czyMoneta(x,y)) {
             licznikMonet++;
         }
-
         Integer[] background = mapa.getBackground();
         background[y * ROZMIAR_PLANSZY_X + x] = 0;
         graphics.drawString("Liczba monet: ", 255, 60);
-        graphics.drawString(String.valueOf(licznikMonet),340,60);
+        graphics.drawString(String.valueOf(licznikMonet), 340, 60);
     }
 
 }
