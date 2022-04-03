@@ -56,11 +56,13 @@ public class Panel extends JPanel implements KeyListener {
     }
 
     private void drawHero(Graphics graphics) {
-        graphics.drawOval(iks * 32, igrek * 32, 32, 32);
+        Color color = graphics.getColor();
+        graphics.fillOval(iks * 32, igrek * 32, 32, 32);
     }
 
     private void drawMonsters(Graphics graphics) {
         Color color = graphics.getColor();
+        graphics.setColor(Color.black);
 
         Stage stage = mapa.getStage();
         if(stage == null) {
