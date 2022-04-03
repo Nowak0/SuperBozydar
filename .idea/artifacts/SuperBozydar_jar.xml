@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SuperBozydar:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SuperBozydar_jar</output-path>
+    <root id="archive" name="SuperBozydar.jar">
+      <element id="module-output" name="SuperBozydar" />
+    </root>
+  </artifact>
+</component>
