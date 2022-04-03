@@ -23,11 +23,8 @@ public class Main {
             if (panel.czyZabijacz(panel.iks, panel.igrek)) {
                 panel.igrek = 10;
                 panel.iks = 10;
-                TheEndScreen.drawTheEnd(panel.getGraphics());
+                TheEndScreen.drawTheEnd(panel.getGraphics(), panel.ending);
                 return;
-            }
-            if (panel.czyMoneta(panel.iks, panel.igrek)) {
-                panel.zbierzMonete(panel.iks, panel.igrek);
             }
 
             if (ostatniSkok == panel.skok) {

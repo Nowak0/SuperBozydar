@@ -10,6 +10,7 @@ public class Panel extends JPanel implements KeyListener {
     public int skok = 0;
     public int licznikMonet = 0;
     public int moneta = 23;
+    public int ending = 0;
 
     int igrek = 0;
     int iks = 0;
@@ -33,12 +34,14 @@ public class Panel extends JPanel implements KeyListener {
 
         drawMonsters(graphics);
 
+
+
         Integer[] background = mapa.getBackground();
         if (background == null) {
-            TheEndScreen.drawTheEnd(graphics);
+            ending++;
+            TheEndScreen.drawTheEnd(graphics,ending);
             return;
         }
-
         for (int i = 0; i < 400; i++) {
             int id = background[i] - 1;
             int Y = id / 4;
@@ -46,7 +49,9 @@ public class Panel extends JPanel implements KeyListener {
             graphics.drawImage(tiles.getImage(),
                     i % 20 * 32, i / 20 * 32, i % 20 * 32 + 32, i / 20 * 32 + 32,
                     0 + X * 32, 0 + Y * 32, 32 + X * 32, 32 + Y * 32, null);
+            zbierzMonete(iks,igrek,graphics);
         }
+
 
     }
 
@@ -59,7 +64,8 @@ public class Panel extends JPanel implements KeyListener {
 
         Stage stage = mapa.getStage();
         if(stage == null) {
-            TheEndScreen.drawTheEnd(getGraphics());
+            ending++;
+            TheEndScreen.drawTheEnd(getGraphics(),ending);
             iks=400;
             igrek=400;
             return;
@@ -139,12 +145,15 @@ public class Panel extends JPanel implements KeyListener {
         return (czyWolnePole(x, y) || czyZabijacz(x, y) || czyMoneta(x, y));
     }
 
-    public void zbierzMonete(int x, int y) {
-        licznikMonet++;
+    public void zbierzMonete(int x, int y, Graphics graphics) {
+        if(czyMoneta(x,y)) {
+            licznikMonet++;
+        }
+
         Integer[] background = mapa.getBackground();
         background[y * ROZMIAR_PLANSZY_X + x] = 0;
-        System.out.print("Liczba monet: ");
-        System.out.println(licznikMonet);
+        graphics.drawString("Liczba monet: ", 255, 60);
+        graphics.drawString(String.valueOf(licznikMonet),340,60);
     }
 
 }
