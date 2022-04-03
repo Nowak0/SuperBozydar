@@ -78,7 +78,6 @@ public class Panel extends JPanel implements KeyListener {
             Position monsterPosition = monster.getPosition();
             graphics.setColor(new Color(255, 0, 255));
             graphics.fillRect(32 * monsterPosition.getX(), 32 * monsterPosition.getY(), 32, 32);
-            graphics.setColor(color);
             monster.changePosition();
         }
     }
