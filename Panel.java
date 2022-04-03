@@ -106,7 +106,7 @@ public class Panel extends JPanel implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        // System.out.println(".");
+        
     }
 
     public boolean czyWolnePole(int x, int y) {
