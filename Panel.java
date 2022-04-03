@@ -57,12 +57,12 @@ public class Panel extends JPanel implements KeyListener {
 
     private void drawHero(Graphics graphics) {
         Color color = graphics.getColor();
+        graphics.setColor(Color.gray);
         graphics.fillOval(iks * 32, igrek * 32, 32, 32);
     }
 
     private void drawMonsters(Graphics graphics) {
         Color color = graphics.getColor();
-        graphics.setColor(Color.black);
 
         Stage stage = mapa.getStage();
         if(stage == null) {
@@ -115,7 +115,10 @@ public class Panel extends JPanel implements KeyListener {
         if (background == null) {
             return false;
         }
-        return (background[y * ROZMIAR_PLANSZY_X + x] == 0);
+        if(background[y * ROZMIAR_PLANSZY_X + x] == 0) {
+            return true;
+        }
+        return false;
     }
 
     public boolean czyZabijacz(int x, int y) {
@@ -140,11 +143,17 @@ public class Panel extends JPanel implements KeyListener {
         if (background == null) {
             return false;
         }
-        return (background[y * ROZMIAR_PLANSZY_X + x] == moneta);
+        if(background[y * ROZMIAR_PLANSZY_X + x] == moneta) {
+            return true;
+        }
+        return false;
     }
 
     public boolean czyMoznaRuszyc(int x, int y) {
-        return (czyWolnePole(x, y) || czyZabijacz(x, y) || czyMoneta(x, y));
+        if(czyWolnePole(x, y) || czyZabijacz(x, y) || czyMoneta(x, y)) {
+            return true;
+        }
+        return false;
     }
 
     public void zbierzMonete(int x, int y, Graphics graphics) {

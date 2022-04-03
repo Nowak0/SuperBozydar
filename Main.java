@@ -21,8 +21,6 @@ public class Main {
             }
 
             if (panel.czyZabijacz(panel.iks, panel.igrek)) {
-                panel.igrek = 10;
-                panel.iks = 10;
                 TheEndScreen.drawTheEnd(panel.getGraphics(), panel.ending,panel.licznikMonet);
                 return;
             }

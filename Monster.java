@@ -8,10 +8,8 @@ public class Monster {
 
     public Monster(Position position) {
         this.position = position;
-        // if(position.getX() > 1) {
         this.minX = position.getX() - 1;
         this.maxX = position.getX() + 1;
-        // }
     }
 
     public Position getPosition() {
