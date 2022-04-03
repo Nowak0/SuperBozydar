@@ -78,6 +78,7 @@ public class Panel extends JPanel implements KeyListener {
             Position monsterPosition = monster.getPosition();
             graphics.setColor(new Color(255, 0, 255));
             graphics.fillRect(32 * monsterPosition.getX(), 32 * monsterPosition.getY(), 32, 32);
+            graphics.setColor(color);
             monster.changePosition();
         }
     }
@@ -106,7 +107,7 @@ public class Panel extends JPanel implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        
+
     }
 
     public boolean czyWolnePole(int x, int y) {
@@ -156,11 +157,11 @@ public class Panel extends JPanel implements KeyListener {
     }
 
     public void zbierzMonete(int x, int y, Graphics graphics) {
+        Integer[] background = mapa.getBackground();
         if(czyMoneta(x,y)) {
             licznikMonet++;
+            background[y * ROZMIAR_PLANSZY_X + x] = 0;
         }
-        Integer[] background = mapa.getBackground();
-        background[y * ROZMIAR_PLANSZY_X + x] = 0;
         graphics.drawString("Liczba monet: ", 255, 60);
         graphics.drawString(String.valueOf(licznikMonet), 340, 60);
     }
